@@ -103,5 +103,5 @@ department_salary_sum.write.format('parquet').mode('overwrite').save(gold_depart
 for i in table_name:
     output_path = f'dbfs:/mnt/gold/{i}/'
     #spark.conf.set("spark.databricks.delta.formatCheck.enabled", "false")
-    df.write.format('delta').option("overwriteSchema", "true").mode("overwrite").save(output_path)
+    df.write.format('csv').option("overwriteSchema", "true").mode("overwrite").save(output_path)
 
