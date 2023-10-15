@@ -72,21 +72,23 @@ for i in table_name:
 
 # COMMAND ----------
 
-
+"""
 for i in table_name:
     output_path = f'dbfs:/mnt/silver/{i}/'
     #spark.conf.set("spark.databricks.delta.formatCheck.enabled", "false")
     df.write.format('delta').option("overwriteSchema", "true").mode("overwrite").save(output_path)
-
+"""
 
 # COMMAND ----------
 
-
+"""
 for i in table_name:
     output_path = f'dbfs:/mnt/silver/{i}/'
     
     # Save the filtered DataFrame as a CSV with null rows removed
     df_filtered.write.format('csv').option('header', 'True').mode('overwrite').save(output_path)
+
+"""
 
 # COMMAND ----------
 
