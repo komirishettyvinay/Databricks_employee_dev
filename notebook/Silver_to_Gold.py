@@ -94,8 +94,8 @@ gold_region_salary_path = 'dbfs:/mnt/gold/region_salary_sum/'
 gold_department_salary_path = 'dbfs:/mnt/gold/department_salary_sum/'
 
 # Save the DataFrames to the "gold" layer in Parquet format
-region_salary_sum.write.format('parquet').mode('overwrite').save(gold_region_salary_path)
-department_salary_sum.write.format('parquet').mode('overwrite').save(gold_department_salary_path)
+region_salary_sum.write.format('csv').mode('overwrite').save(gold_region_salary_path)
+department_salary_sum.write.format('csv').mode('overwrite').save(gold_department_salary_path)
 
 
 # COMMAND ----------
