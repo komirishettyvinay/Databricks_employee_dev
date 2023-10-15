@@ -1,0 +1,17 @@
+{
+	"name": "Create_Views_SP",
+	"properties": {
+		"content": {
+			"query": "USE gold_db;\nGO\n\nCREATE OR ALTER PROCEDURE CreateSQLServerlessView2_gold (@ViewName NVARCHAR(100))\nAS\nBEGIN\n    DECLARE @Statement NVARCHAR(MAX);\n\n    SET @Statement = N'CREATE OR ALTER VIEW ' + QUOTENAME(@ViewName) + ' AS\n        SELECT *\n        FROM OPENROWSET(\n            BULK ''https://laketest.dfs.core.windows.net/gold/' + @ViewName + '/**'',\n            FORMAT = ''PARQUET''\n        ) AS [result]';\n\n    EXEC sp_executesql @Statement;\nEND\nGO\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "gold_db",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

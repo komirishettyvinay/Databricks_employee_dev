@@ -1,0 +1,29 @@
+{
+	"name": "gold_Parquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "dev-synapse-env-WorkspaceDefaultStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "gold"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "department_name",
+				"type": "UTF8"
+			},
+			{
+				"name": "sum(salary)",
+				"type": "DOUBLE"
+			}
+		]
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

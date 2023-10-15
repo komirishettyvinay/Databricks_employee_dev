@@ -1,0 +1,17 @@
+{
+	"name": "Drop_Views",
+	"properties": {
+		"content": {
+			"query": "USE gold_db;\nGO\n\nCREATE OR ALTER PROCEDURE DropView2_gold (@ViewName NVARCHAR(100))\nAS\nBEGIN\n    DECLARE @Statement NVARCHAR(MAX);\n\n    SET @Statement = N'DROP VIEW ' + QUOTENAME(@ViewName);\n\n    EXEC sp_executesql @Statement;\nEND\nGO\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "gold_db",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
