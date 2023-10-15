@@ -25,6 +25,11 @@ for i in table_name:
     print(i)
     print(column)
     df.printSchema()
+
+    output_path = f'dbfs:/mnt/gold/{i}/'
+    #spark.conf.set("spark.databricks.delta.formatCheck.enabled", "false")
+    df.write.format('csv').option('header', 'True').mode('overwrite').save(output_path)
+    
     print("\n")
 
 # COMMAND ----------
@@ -96,12 +101,4 @@ gold_department_salary_path = 'dbfs:/mnt/gold/department_salary_sum/'
 # Save the DataFrames to the "gold" layer in Parquet format
 region_salary_sum.write.format('csv').mode('overwrite').save(gold_region_salary_path)
 department_salary_sum.write.format('csv').mode('overwrite').save(gold_department_salary_path)
-
-
-# COMMAND ----------
-
-for i in table_name:
-    output_path = f'dbfs:/mnt/gold/{i}/'
-    #spark.conf.set("spark.databricks.delta.formatCheck.enabled", "false")
-    df.write.format('csv').option("overwriteSchema", "true").mode("overwrite").save(output_path)
 
