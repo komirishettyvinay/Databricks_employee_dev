@@ -28,7 +28,7 @@ for i in table_name:
 
     output_path = f'dbfs:/mnt/gold/{i}/'
     #spark.conf.set("spark.databricks.delta.formatCheck.enabled", "false")
-    df.write.format('csv').option('header', 'True').mode('overwrite').save(output_path)
+    df.write.format('parquet').option('header', 'True').mode('overwrite').save(output_path)
     
     print("\n")
 
@@ -54,7 +54,7 @@ display(df_group)
 # COMMAND ----------
 
 # Group by 'department' and calculate the sum of 'salary' for each department
-department_salary_sum = df_group.groupBy('department_name').agg({'salary': 'sum'})
+department_salary_sum = df_group.groupBy('department_name').agg(sum('salary').alias("Sum_Dept_Salary"))
 
 # Show the result
 display(department_salary_sum)
@@ -87,7 +87,7 @@ display(final_df)
 # COMMAND ----------
 
 # Group by 'region_name' and calculate the sum of 'salary' for each region
-region_salary_sum = final_df_filtered.groupBy('region_name').agg({'salary': 'sum'})
+region_salary_sum = final_df_filtered.groupBy('region_name').agg(sum("salary").alias("Sum_Region_Salary"))
 
 # Show the result
 display(region_salary_sum)
@@ -99,6 +99,6 @@ gold_region_salary_path = 'dbfs:/mnt/gold/region_salary_sum/'
 gold_department_salary_path = 'dbfs:/mnt/gold/department_salary_sum/'
 
 # Save the DataFrames to the "gold" layer in Parquet format
-region_salary_sum.write.format('csv').mode('overwrite').save(gold_region_salary_path)
-department_salary_sum.write.format('csv').mode('overwrite').save(gold_department_salary_path)
+region_salary_sum.write.format('parquet').option('header', 'True').mode('overwrite').save(gold_region_salary_path)
+department_salary_sum.write.format('parquet').option('header', 'True').mode('overwrite').save(gold_department_salary_path)
 
