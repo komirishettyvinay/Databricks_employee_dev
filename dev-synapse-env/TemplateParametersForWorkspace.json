@@ -1,0 +1,18 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"workspaceName": {
+			"value": "dev-synapse-env"
+		},
+		"AzureSqlDatabase1_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=dev-synapse-env-ondemand.sql.azuresynapse.net;Initial Catalog=gold_db"
+		},
+		"dev-synapse-env-WorkspaceDefaultSqlServer_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:dev-synapse-env.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
+		},
+		"dev-synapse-env-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"value": "https://laketest.dfs.core.windows.net"
+		}
+	}
+}
