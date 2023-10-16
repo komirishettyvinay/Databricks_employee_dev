@@ -1,0 +1,9 @@
+{
+	"name": "dd-dev-env",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "ff0c4681-ca8b-45d5-97ed-7857977271d7",
+		"tenantId": "71b3cf85-266f-452c-bbec-11f0d31531a8"
+	}
+}

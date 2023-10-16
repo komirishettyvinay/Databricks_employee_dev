@@ -1,0 +1,16 @@
+{
+	"name": "OnPrem_SqlServer",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": "integrated security=False;data source=LAPTOP-U6PEVHTS\\SQLEXPRESS;initial catalog=DEV_EMP_DB;user id=SQL-SERVER",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJhNTc1Y2Q2ZC04MjIzLTRmNDMtYjE1Mi05ODE2Nzk1NzRlNDgiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "ONPrem-integrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

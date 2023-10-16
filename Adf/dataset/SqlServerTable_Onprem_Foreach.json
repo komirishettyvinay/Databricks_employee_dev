@@ -1,0 +1,24 @@
+{
+	"name": "SqlServerTable_Onprem_Foreach",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "OnPrem_SqlServer",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"tableName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"table": {
+				"value": "@dataset().tableName",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
